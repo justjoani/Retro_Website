@@ -1,0 +1,165 @@
+/* ===== Grundlook ===== */
+body {
+  background: #0d0221 !important;
+  color: #f5f0ff !important;
+  font-family: "VT323", monospace !important;
+  font-size: 20px;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Press Start 2P", monospace !important;
+  line-height: 1.5;
+}
+a { color: #05d9e8; }
+a:hover { color: #ffe600; }
+p, li, label, small { color: #f5f0ff; }
+
+/* Bereiche der Vorlage durchsichtig */
+#page, #page div, #page section, #page aside, #page header, #page footer {
+  background-color: transparent !important;
+}
+
+/* Produkte und Texte immer sichtbar (sonst blendet die Vorlage sie erst per Script ein) */
+.animate-box { opacity: 1 !important; }
+
+/* Abdunkelung über dem Titelbild wiederherstellen */
+#page .fh5co-cover .overlay {
+  background-color: rgba(13, 2, 33, 0.75) !important;
+}
+
+/* ===== Überschriften ===== */
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: #ffe600 !important;
+  text-shadow: 3px 3px 0 #ff2a6d;
+}
+h1 a:hover, h2 a:hover, h3 a:hover,
+h4 a:hover, h5 a:hover, h6 a:hover {
+  color: #05d9e8 !important;
+}
+
+/* ===== Navigation ===== */
+#page nav.fh5co-nav,
+#page nav.fh5co-nav.scrolled,
+#page nav.fh5co-nav.sleep {
+  background-color: rgba(13, 2, 33, 0.95) !important;
+  border-bottom: 4px solid #3a1d6e;
+}
+.fh5co-nav .menu-1 > ul > li > a {
+  color: #05d9e8 !important;
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 11px !important;
+}
+.fh5co-nav .menu-1 > ul > li > a:hover,
+.fh5co-nav .menu-1 > ul > li.active > a {
+  color: #ffe600 !important;
+}
+.fh5co-nav .menu-1 .dropdown {
+  background: #1a0b3b !important;
+  border: 4px solid #05d9e8;
+  border-radius: 0 !important;
+}
+.fh5co-nav .menu-1 .dropdown li a {
+  color: #f5f0ff !important;
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 10px !important;
+}
+.fh5co-nav .menu-1 .dropdown li a:hover { color: #ffe600 !important; }
+#fh5co-logo a {
+  color: #ffe600 !important;
+  font-family: "Press Start 2P", monospace !important;
+}
+
+/* ===== Produkte ===== */
+.product .product-grid {
+  min-height: 280px;
+  background-size: cover;
+  border: 4px solid #05d9e8;
+  box-shadow: 6px 6px 0 #3a1d6e;
+}
+#page .product-grid .inner { background-color: rgba(13, 2, 33, 0.7) !important; }
+.product .desc h3,
+.product .desc h3 a {
+  font-size: 12px !important;
+  line-height: 1.7 !important;
+}
+.product .desc .price {
+  color: #39ff88 !important;
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 14px !important;
+}
+#fh5co-product .fh5co-heading span {
+  color: #05d9e8 !important;
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 12px !important;
+}
+#fh5co-product .fh5co-heading h2 { font-size: 26px !important; }
+
+/* ===== Newsletter und Footer ===== */
+#fh5co-footer p,
+#fh5co-footer .fh5co-footer-links li a,
+#fh5co-footer small { color: #f5f0ff !important; }
+#fh5co-footer .fh5co-footer-links li a:hover { color: #05d9e8 !important; }
+
+/* ===== Tabs (Einzelprodukt-Seite) ===== */
+.nav-tabs > li > a,
+.nav-tabs > li > a span {
+  color: #05d9e8 !important;
+  background: transparent !important;
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 11px !important;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a span,
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:hover span {
+  color: #ffe600 !important;
+  background: transparent !important;
+}
+
+/* ===== Bilder ===== */
+img {
+  border: 4px solid #05d9e8;
+  border-radius: 0 !important;
+  box-shadow: 6px 6px 0 #3a1d6e;
+}
+
+/* ===== 8-Bit-Buttons ===== */
+.eightbit-btn, .btn, button, input[type="submit"] {
+  position: relative;
+  display: inline-block;
+  margin: 8px 6px;
+  padding: 14px 22px !important;
+  background: #ffe600 !important;
+  color: #0d0221 !important;
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 11px !important;
+  line-height: 1.4;
+  text-decoration: none !important;
+  cursor: pointer;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow:
+    inset -4px -4px 0 #b39e00,
+    0 -4px 0 0 #f5f0ff, 0 4px 0 0 #f5f0ff,
+    -4px 0 0 0 #f5f0ff, 4px 0 0 0 #f5f0ff !important;
+}
+.eightbit-btn:hover, .btn:hover, button:hover { background: #fff27a !important; }
+.eightbit-btn:active, .btn:active, button:active { transform: translateY(4px); }
+.eightbit-btn:focus-visible, .btn:focus-visible, button:focus-visible {
+  outline: 3px dashed #05d9e8;
+  outline-offset: 8px;
+}
+.eightbit-btn--proceed { background: #39ff88 !important; }
+.eightbit-btn--proceed:hover { background: #8dffbd !important; }
+.eightbit-btn--reset { background: #ff2a6d !important; }
+.eightbit-btn--reset:hover { background: #ff6f9c !important; }
+
+/* ===== Scanlines ===== */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,.2) 0 1px, transparent 1px 3px);
+  z-index: 9999;
+}
