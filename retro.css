@@ -1,3 +1,8 @@
+/* =====================================================
+   retro.css  –  Retro-Gaming-Look über der Vorlage
+   Muss in jeder HTML-Datei NACH css/style.css stehen.
+   ===================================================== */
+
 /* ===== Grundlook ===== */
 body {
   background: #0d0221 !important;
@@ -11,7 +16,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 a { color: #05d9e8; }
 a:hover { color: #ffe600; }
-p, li, label, small { color: #f5f0ff; }
+p, li, label, small, td, th { color: #f5f0ff; }
 
 /* Bereiche der Vorlage durchsichtig */
 #page, #page div, #page section, #page aside, #page header, #page footer {
@@ -69,6 +74,46 @@ h4 a:hover, h5 a:hover, h6 a:hover {
   font-family: "Press Start 2P", monospace !important;
 }
 
+/* ===== Navigation rechts: Suche und Warenkorb ===== */
+#page nav.fh5co-nav .menu-2 a,
+#page nav.fh5co-nav .menu-2 a i,
+#page nav.fh5co-nav .menu-2 a span,
+#page nav.fh5co-nav a.cart,
+#page nav.fh5co-nav a.cart i,
+#page nav.fh5co-nav a.cart span {
+  color: #05d9e8 !important;
+}
+#page nav.fh5co-nav .menu-2 a:hover,
+#page nav.fh5co-nav .menu-2 a:hover i,
+#page nav.fh5co-nav .menu-2 a:hover span,
+#page nav.fh5co-nav a.cart:hover,
+#page nav.fh5co-nav a.cart:hover i,
+#page nav.fh5co-nav a.cart:hover span {
+  color: #ffe600 !important;
+}
+
+/* Zähler (die Zahl am Warenkorb) als pinker Kasten */
+#page nav.fh5co-nav a.cart small {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 3px 7px;
+  background: #ff2a6d !important;
+  color: #f5f0ff !important;
+  border-radius: 0 !important;
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 10px !important;
+  line-height: 1.2;
+}
+
+/* Warenkorb-Symbol auf dem Handy (Menü-Schalter) */
+.js-fh5co-nav-toggle i::before,
+.js-fh5co-nav-toggle i::after,
+.fh5co-nav-toggle i,
+.fh5co-nav-toggle i::before,
+.fh5co-nav-toggle i::after {
+  background: #05d9e8 !important;
+}
+
 /* ===== Produkte ===== */
 .product .product-grid {
   min-height: 280px;
@@ -116,6 +161,53 @@ h4 a:hover, h5 a:hover, h6 a:hover {
   background: transparent !important;
 }
 
+/* ===== Formulare (Newsletter, Suche, Warenkorb, Kasse) ===== */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="password"],
+select,
+textarea,
+.form-control {
+  background: #1a0b3b !important;
+  color: #f5f0ff !important;
+  border: 4px solid #05d9e8 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: "VT323", monospace !important;
+  font-size: 20px !important;
+}
+input::placeholder,
+textarea::placeholder { color: #9a8bc4 !important; }
+input:focus,
+select:focus,
+textarea:focus,
+.form-control:focus {
+  border-color: #ffe600 !important;
+  outline: none;
+}
+
+/* ===== Tabellen (Warenkorb-Seite) ===== */
+table, .table {
+  color: #f5f0ff !important;
+  background: transparent !important;
+}
+.table > thead > tr > th,
+.table > tbody > tr > td,
+table th,
+table td {
+  border-color: #3a1d6e !important;
+  color: #f5f0ff !important;
+}
+.table > thead > tr > th,
+table th {
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 11px !important;
+  color: #ffe600 !important;
+}
+
 /* ===== Bilder ===== */
 img {
   border: 4px solid #05d9e8;
@@ -154,6 +246,15 @@ img {
 .eightbit-btn--reset { background: #ff2a6d !important; }
 .eightbit-btn--reset:hover { background: #ff6f9c !important; }
 
+/* ===== Sichtbarer Fokus für Tastatur-Bedienung ===== */
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px dashed #ffe600;
+  outline-offset: 4px;
+}
+
 /* ===== Scanlines ===== */
 body::after {
   content: "";
@@ -162,4 +263,12 @@ body::after {
   pointer-events: none;
   background: repeating-linear-gradient(0deg, rgba(0,0,0,.2) 0 1px, transparent 1px 3px);
   z-index: 9999;
+}
+
+/* ===== Handy-Ansicht ===== */
+@media (max-width: 768px) {
+  body { font-size: 18px; }
+  .fh5co-nav .menu-1 > ul > li > a { font-size: 10px !important; }
+  .product .product-grid { min-height: 220px; }
+  #fh5co-product .fh5co-heading h2 { font-size: 18px !important; }
 }
