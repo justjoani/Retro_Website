@@ -433,3 +433,19 @@ body::after {
   display: table;
   clear: both;
 }
+
+/* ===== Karte auf der Kontaktseite ===== */
+.retro-map {
+  width: calc(100% - 32px);
+  max-width: 800px;
+  margin: 40px auto;
+  border: 4px solid #05d9e8;
+  box-shadow: 6px 6px 0 #3a1d6e;
+  line-height: 0;
+}
+.retro-map iframe {
+  display: block;
+  width: 100%;
+  height: 350px;
+  border: 0;
+}
