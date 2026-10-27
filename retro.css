@@ -272,3 +272,35 @@ body::after {
   .product .product-grid { min-height: 220px; }
   #fh5co-product .fh5co-heading h2 { font-size: 18px !important; }
 }
+
+/* ===== Zähler-Abschnitt (Foto mit Zahlen) ===== */
+#page #fh5co-counter {
+  position: relative;
+}
+/* dunkle Schicht über dem Foto */
+#page #fh5co-counter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 2, 33, 0.85);
+  z-index: 0;
+}
+#page #fh5co-counter .container {
+  position: relative;
+  z-index: 1;
+}
+#fh5co-counter .counter {
+  color: #ffe600 !important;
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 26px !important;
+  text-shadow: 3px 3px 0 #ff2a6d;
+}
+#fh5co-counter .counter-label {
+  color: #05d9e8 !important;
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 11px !important;
+  line-height: 1.6;
+}
+#fh5co-counter .icon i {
+  color: #0d0221 !important;
+}
