@@ -449,3 +449,62 @@ body::after {
   height: 350px;
   border: 0;
 }
+
+/* ===== Feinschliff ===== */
+
+/* Schrift: Pixel-Schrift nur für Logo, Menü, Buttons und große Überschriften (h1, h2).
+   Kleinere Überschriften und Beschriftungen in der ruhigeren VT323 */
+body h3, body h4, body h5, body h6 {
+  font-family: "VT323", monospace !important;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  text-shadow: none !important;
+}
+.table > thead > tr > th,
+table th {
+  font-family: "VT323", monospace !important;
+  font-size: 22px !important;
+}
+#page #review-form h3 {
+  font-size: 26px !important;
+}
+#page #review-form > label,
+#page #review-form .review-rating legend {
+  font-family: "VT323", monospace !important;
+  font-size: 22px !important;
+}
+
+/* Scanlines deutlich schwächer, damit Text und Fotos ruhiger wirken */
+body::after {
+  background: repeating-linear-gradient(0deg,
+    rgba(0, 0, 0, 0.07) 0 1px,
+    transparent 1px 4px) !important;
+}
+
+/* Zweitrangige Buttons: türkiger Rahmen ohne Füllung */
+.btn.eightbit-btn--secondary,
+button.eightbit-btn--secondary {
+  background: transparent !important;
+  color: #05d9e8 !important;
+  box-shadow:
+    0 -4px 0 0 #05d9e8, 0 4px 0 0 #05d9e8,
+    -4px 0 0 0 #05d9e8, 4px 0 0 0 #05d9e8 !important;
+}
+.btn.eightbit-btn--secondary:hover,
+button.eightbit-btn--secondary:hover {
+  background: #05d9e8 !important;
+  color: #0d0221 !important;
+}
+
+/* Produktnamen: hell, ohne Schatten */
+html body #page .product .desc h3,
+html body #page .product .desc h3 a {
+  color: #f5f0ff !important;
+  text-shadow: none !important;
+  font-family: "VT323", monospace !important;
+  font-size: 24px !important;
+}
+html body #page .product .desc h3 a:hover {
+  color: #05d9e8 !important;
+}

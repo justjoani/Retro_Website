@@ -101,7 +101,7 @@
       p.textContent = "Dein Warenkorb ist noch leer.";
       var back = document.createElement("a");
       back.href = "index.html";
-      back.className = "btn";
+      back.className = "btn eightbit-btn--secondary";
       back.textContent = "Weiter einkaufen";
       box.appendChild(p);
       box.appendChild(back);
@@ -172,7 +172,7 @@
 
     var more = document.createElement("a");
     more.href = "index.html";
-    more.className = "btn";
+    more.className = "btn eightbit-btn--secondary";
     more.textContent = "Weiter einkaufen";
     box.appendChild(more);
 
