@@ -335,3 +335,101 @@ body::after {
   color: #39ff88 !important;
   font-family: "Press Start 2P", monospace !important;
 }
+
+/* ===== Bewertungsformular ===== */
+#review-form {
+  clear: both;
+  max-width: 640px;
+  margin: 40px 0;
+  padding: 24px;
+  background: rgba(13, 2, 33, 0.6);
+  border: 4px solid #05d9e8;
+  box-shadow: 6px 6px 0 #3a1d6e;
+  text-align: left;
+}
+
+#review-form h3 {
+  margin: 0 0 16px;
+  font-size: 16px !important;
+}
+#review-form > label {
+  display: block;
+  margin: 16px 0 6px;
+  color: #05d9e8;
+  font-family: "Press Start 2P", monospace;
+  font-size: 11px;
+}
+#review-form input[type="text"],
+#review-form textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+}
+#review-form textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+#review-form .review-rating {
+  border: 0;
+  padding: 0;
+  margin: 16px 0 0;
+}
+#review-form .review-rating legend {
+  color: #05d9e8;
+  font-family: "Press Start 2P", monospace;
+  font-size: 11px;
+  border: 0;
+  margin-bottom: 8px;
+}
+#review-form .review-rating label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 14px 6px 0;
+  color: #ffe600;
+  font-size: 20px;
+  cursor: pointer;
+}
+#review-form .review-rating input[type="radio"] {
+  accent-color: #ffe600;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+#review-form button[type="submit"] {
+  margin: 20px 0 0;
+}
+#review-message {
+  margin: 14px 0 0;
+  min-height: 1.5em;
+}
+
+/* Keep tab content in document flow so following sections clear the open tab. */
+.fh5co-tabs .fh5co-tab-content-wrap {
+  height: auto !important;
+  min-height: 0 !important;
+  position: relative !important;
+  top: 0 !important;
+  overflow: visible !important;
+}
+.fh5co-tabs .fh5co-tab-content-wrap .tab-content {
+  display: none;
+  height: auto !important;
+  min-height: 0 !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+  overflow: visible !important;
+}
+.fh5co-tabs .fh5co-tab-content-wrap .tab-content.active:not(.fadeOutDown) {
+  display: block;
+}
+.fh5co-tabs .fh5co-tab-content-wrap .tab-content::after {
+  content: "";
+  display: table;
+  clear: both;
+}

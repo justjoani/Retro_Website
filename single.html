@@ -267,6 +267,29 @@
 											</span>
 										</div>
 									</div>
+									<div id="review-list"></div>
+
+									<form id="review-form" data-product-id="single-produkt">
+										<h3>Bewertung schreiben</h3>
+
+										<label for="review-name">Dein Name</label>
+										<input type="text" id="review-name" maxlength="40" required>
+
+										<fieldset class="review-rating">
+											<legend>Deine Bewertung</legend>
+											<label><input type="radio" name="review-rating" value="1"> 1 ★</label>
+											<label><input type="radio" name="review-rating" value="2"> 2 ★</label>
+											<label><input type="radio" name="review-rating" value="3"> 3 ★</label>
+											<label><input type="radio" name="review-rating" value="4"> 4 ★</label>
+											<label><input type="radio" name="review-rating" value="5" checked> 5 ★</label>
+										</fieldset>
+
+										<label for="review-text">Dein Text</label>
+										<textarea id="review-text" rows="4" maxlength="500" required></textarea>
+
+										<button type="submit">Bewertung abschicken</button>
+										<p id="review-message" role="status"></p>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -383,5 +406,6 @@
 	<!-- Main -->
 	<script src="js/main.js"></script>
 	<script src="cart.js"></script>
+	<script src="reviews.js"></script>
 	</body>
 </html>
