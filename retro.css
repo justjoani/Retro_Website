@@ -304,3 +304,34 @@ body::after {
 #fh5co-counter .icon i {
   color: #0d0221 !important;
 }
+
+/* ===== Slider auf der Startseite ===== */
+/* dunkle Schicht über jedem Slide: links stark (Text), rechts schwach (Produkt) */
+#fh5co-hero .flexslider .slides > li {
+  position: relative;
+}
+#fh5co-hero .flexslider .slides > li::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    rgba(13, 2, 33, 0.92) 0%,
+    rgba(13, 2, 33, 0.75) 45%,
+    rgba(13, 2, 33, 0.2) 100%);
+  z-index: 0;
+}
+#fh5co-hero .container {
+  position: relative;
+  z-index: 1;
+}
+#fh5co-hero .slider-text .desc h2 {
+  color: #ffe600 !important;
+  text-shadow: 3px 3px 0 #ff2a6d;
+}
+#fh5co-hero .slider-text .desc p {
+  color: #f5f0ff !important;
+}
+#fh5co-hero .slider-text .desc .price {
+  color: #39ff88 !important;
+  font-family: "Press Start 2P", monospace !important;
+}
