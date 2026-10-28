@@ -530,3 +530,23 @@ html body #page .product .desc h3 a:hover {
 .retro-gallery a.active img {
   border-color: #ffe600;
 }
+
+/* ===== Produktkarten: Bildwechsel sichtbar machen ===== */
+#page .product .product-grid .inner {
+  background-color: transparent !important;
+}
+#page .product .product-grid .inner a.icon {
+  background: #0d0221 !important;
+  color: #ffe600 !important;
+  border: 3px solid #05d9e8 !important;
+  border-radius: 0 !important;
+}
+#page .product .product-grid .inner a.icon i {
+  color: #ffe600 !important;
+}
+#page .product .product-grid .inner a.icon:hover {
+  background: #ffe600 !important;
+}
+#page .product .product-grid .inner a.icon:hover i {
+  color: #0d0221 !important;
+}

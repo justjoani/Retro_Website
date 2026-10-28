@@ -31,13 +31,15 @@
     return e;
   }
 
-  /* Eine Produktkarte im gleichen Aufbau wie in der Vorlage */
+  /* Eine Produktkarte: beim Hovern wechseln die Bilder, ein Klick öffnet das Produkt */
   function buildCard(p) {
     var col = el("div", "col-md-4 text-center");
     var box = el("div", "product");
+    var imgs = imagesOf(p);
 
     var grid = el("div", "product-grid");
     grid.style.backgroundImage = 'url("' + encodeURI(mainImage(p)) + '")';
+    grid.style.cursor = "pointer";
     if (p.sale) grid.appendChild(el("span", "sale", "Sale"));
 
     var inner = el("div", "inner");
@@ -62,6 +64,37 @@
     para.appendChild(eye);
     inner.appendChild(para);
     grid.appendChild(inner);
+
+    /* Bildwechsel beim Hovern (nur bei mehreren Bildern) */
+    if (imgs.length > 1) {
+      imgs.forEach(function (src) { new Image().src = src; }); /* vorladen */
+      var timer = null;
+      var idx = 0;
+      var show = function (i) {
+        grid.style.backgroundImage = 'url("' + encodeURI(imgs[i]) + '")';
+      };
+      grid.addEventListener("mouseenter", function () {
+        if (timer) return;
+        idx = (idx + 1) % imgs.length;
+        show(idx);
+        timer = setInterval(function () {
+          idx = (idx + 1) % imgs.length;
+          show(idx);
+        }, 900);
+      });
+      grid.addEventListener("mouseleave", function () {
+        clearInterval(timer);
+        timer = null;
+        idx = 0;
+        show(0);
+      });
+    }
+
+    /* Klick aufs Bild = gleiches Ziel wie der Produktname (Symbole behalten ihre eigene Funktion) */
+    grid.addEventListener("click", function (e) {
+      if (e.target.closest("a")) return;
+      location.href = detailUrl(p);
+    });
 
     var desc = el("div", "desc");
     var h3 = el("h3");
