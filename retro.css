@@ -508,3 +508,25 @@ html body #page .product .desc h3 a {
 html body #page .product .desc h3 a:hover {
   color: #05d9e8 !important;
 }
+
+/* ===== Bildvorschau auf der Produktseite ===== */
+.retro-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.retro-gallery a {
+  display: block;
+  width: 72px;
+}
+.retro-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-width: 3px;
+  box-shadow: 3px 3px 0 #3a1d6e;
+}
+.retro-gallery a.active img {
+  border-color: #ffe600;
+}

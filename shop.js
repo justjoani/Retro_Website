@@ -1,12 +1,19 @@
 /* shop.js – baut Produktlisten und die Detailseite aus products.js.
    Listen:  <div data-products></div>  (optional data-category="...", data-limit="6", data-exclude-current)
    Detailseite: Container mit data-product-page, darin Elemente mit
-   data-product="name | price | description | image | cart-button" */
+   data-product="name | price | description | image | gallery | cart-button" */
 (function () {
   var products = window.PRODUCTS || [];
 
   function euro(n) {
     return Number(n).toLocaleString("de-DE", { style: "currency", currency: "EUR" });
+  }
+  function imagesOf(p) {
+    if (p.images && p.images.length) return p.images;
+    return p.image ? [p.image] : [];
+  }
+  function mainImage(p) {
+    return imagesOf(p)[0] || "";
   }
   function byId(id) {
     return products.filter(function (p) { return p.id === id; })[0];
@@ -30,7 +37,7 @@
     var box = el("div", "product");
 
     var grid = el("div", "product-grid");
-    grid.style.backgroundImage = 'url("' + encodeURI(p.image) + '")';
+    grid.style.backgroundImage = 'url("' + encodeURI(mainImage(p)) + '")';
     if (p.sale) grid.appendChild(el("span", "sale", "Sale"));
 
     var inner = el("div", "inner");
@@ -41,7 +48,7 @@
     add.setAttribute("data-id", p.id);
     add.setAttribute("data-name", p.name);
     add.setAttribute("data-price", String(p.price));
-    add.setAttribute("data-image", p.image);
+    add.setAttribute("data-image", mainImage(p));
     add.setAttribute("data-url", detailUrl(p));
     add.setAttribute("aria-label", "In den Warenkorb: " + p.name);
     add.appendChild(el("i", "icon-shopping-cart"));
@@ -103,6 +110,42 @@
     });
   }
 
+  function showImage(src, name) {
+    document.querySelectorAll("[data-product='image']").forEach(function (e) {
+      if (e.tagName === "IMG") {
+        e.src = src;
+        e.alt = name;
+      } else {
+        e.style.backgroundImage = 'url("' + encodeURI(src) + '")';
+      }
+    });
+  }
+
+  /* Vorschaubilder unter dem Hauptbild, nur wenn es mehrere Bilder gibt */
+  function buildGallery(p) {
+    var imgs = imagesOf(p);
+    document.querySelectorAll("[data-product='gallery']").forEach(function (gal) {
+      gal.textContent = "";
+      if (imgs.length < 2) return;
+      imgs.forEach(function (src, i) {
+        var a = el("a", i === 0 ? "active" : "");
+        a.href = "#";
+        a.setAttribute("aria-label", "Bild " + (i + 1) + " von " + imgs.length + ": " + p.name);
+        var im = document.createElement("img");
+        im.src = src;
+        im.alt = "";
+        a.appendChild(im);
+        a.addEventListener("click", function (e) {
+          e.preventDefault();
+          showImage(src, p.name);
+          gal.querySelectorAll("a").forEach(function (x) { x.classList.remove("active"); });
+          a.classList.add("active");
+        });
+        gal.appendChild(a);
+      });
+    });
+  }
+
   /* Detailseite: ohne ?id= das erste Produkt, bei falscher id eine Meldung */
   function fillDetail() {
     if (!document.querySelector("[data-product-page]")) return;
@@ -120,15 +163,8 @@
     setText("name", p.name);
     setText("price", euro(p.price));
     setText("description", p.description);
-
-    document.querySelectorAll("[data-product='image']").forEach(function (e) {
-      if (e.tagName === "IMG") {
-        e.src = p.image;
-        e.alt = p.name;
-      } else {
-        e.style.backgroundImage = 'url("' + encodeURI(p.image) + '")';
-      }
-    });
+    showImage(mainImage(p), p.name);
+    buildGallery(p);
 
     document.querySelectorAll("[data-product='cart-button']").forEach(function (b) {
       b.classList.add("add-to-cart");
@@ -136,7 +172,7 @@
       b.setAttribute("data-id", p.id);
       b.setAttribute("data-name", p.name);
       b.setAttribute("data-price", String(p.price));
-      b.setAttribute("data-image", p.image);
+      b.setAttribute("data-image", mainImage(p));
       b.setAttribute("data-url", detailUrl(p));
     });
 
