@@ -550,3 +550,23 @@ html body #page .product .desc h3 a:hover {
 #page .product .product-grid .inner a.icon:hover i {
   color: #0d0221 !important;
 }
+
+/* ===== Retro-Mauszeiger (Pixel-Look) ===== */
+:root {
+  --cursor-default: url("images/cursors/cursor-arrow.svg") 0 0, default;
+  --cursor-pointer: url("images/cursors/cursor-hand.svg") 9 0, pointer;
+  --cursor-prev: url("images/cursors/cursor-prev.svg") 14 11, w-resize;
+  --cursor-next: url("images/cursors/cursor-next.svg") 14 11, e-resize;
+}
+
+html, body {
+  cursor: var(--cursor-default);
+}
+
+/* Alles Anklickbare bekommt die Pixel-Hand */
+a, a *, button, [role="button"], .btn, label, select,
+input[type="submit"], input[type="radio"], input[type="checkbox"],
+.add-to-cart, [data-action],
+.product .product-grid, [data-hero] > li, .retro-gallery a {
+  cursor: var(--cursor-pointer) !important;
+}

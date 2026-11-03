@@ -197,9 +197,9 @@
         var r = big.getBoundingClientRect();
         return e.clientX - r.left < r.width / 2;
       }
-      big.style.cursor = "e-resize";
+      big.style.cursor = "var(--cursor-next, e-resize)";
       big.addEventListener("mousemove", function (e) {
-        big.style.cursor = isLeft(e) ? "w-resize" : "e-resize";
+        big.style.cursor = isLeft(e) ? "var(--cursor-prev, w-resize)" : "var(--cursor-next, e-resize)";
       });
       big.addEventListener("click", function (e) {
         e.preventDefault();
