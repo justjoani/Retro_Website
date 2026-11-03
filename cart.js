@@ -184,6 +184,42 @@
     box.appendChild(clear);
   }
 
+  /* Schwebender Warenkorb-Button: erscheint erst nach dem Scrollen, nicht auf der Warenkorb-Seite */
+  function makeFab() {
+    if (document.querySelector(".cart-fab")) return;
+    var file = location.pathname.split("/").pop() || "";
+    if (file.indexOf("cart") === 0) return;
+    var a = document.createElement("a");
+    a.className = "cart cart-fab";
+    a.href = "cart.html";
+    a.setAttribute("aria-label", "Warenkorb ansehen");
+    var i = document.createElement("i");
+    i.className = "icon-shopping-cart";
+    var s = document.createElement("small");
+    s.textContent = "0";
+    a.appendChild(i);
+    a.appendChild(s);
+    document.body.appendChild(a);
+
+    function toggle() {
+      a.classList.toggle("is-visible", (window.pageYOffset || document.documentElement.scrollTop) > 300);
+    }
+    window.addEventListener("scroll", toggle, { passive: true });
+    toggle();
+  }
+
+  /* Kurze Pop-Animation: angeklicktes Symbol, Zahl im Menü und schwebender Button (verschiebt kein Layout) */
+  function bump(clicked) {
+    var list = Array.prototype.slice.call(document.querySelectorAll("a.cart small, a.cart-fab"));
+    if (clicked && !clicked.classList.contains("btn")) list.push(clicked);
+    list.forEach(function (el) {
+      el.classList.remove("cart-bump");
+      void el.offsetWidth; /* Animation neu starten */
+      el.classList.add("cart-bump");
+      setTimeout(function () { el.classList.remove("cart-bump"); }, 600);
+    });
+  }
+
   /* Klicks abfangen */
   document.addEventListener("click", function (e) {
     var addBtn = e.target.closest(".add-to-cart");
@@ -196,6 +232,8 @@
         image: addBtn.getAttribute("data-image") || guessImage(addBtn),
         url: addBtn.getAttribute("data-url") || guessUrl(addBtn)
       });
+      bump(addBtn);
+      addBtn.blur();
       var old = addBtn.textContent;
       if (old.trim()) {
         addBtn.textContent = "Hinzugefügt!";
@@ -227,6 +265,7 @@
     renderCart();
   });
 
+  makeFab();
   updateBadge();
   renderCart();
 })();

@@ -570,3 +570,115 @@ input[type="submit"], input[type="radio"], input[type="checkbox"],
 .product .product-grid, [data-hero] > li, .retro-gallery a {
   cursor: var(--cursor-pointer) !important;
 }
+
+/* ===== Schwebender Warenkorb-Button ===== */
+.cart-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #ffe600;
+  border: 4px solid #f5f0ff;
+  box-shadow: 4px 4px 0 #3a1d6e;
+  text-decoration: none !important;
+}
+.cart-fab:hover { background: #fff27a; }
+.cart-fab i {
+  font-size: 22px;
+  color: #0d0221 !important;
+}
+.cart-fab small {
+  padding: 3px 7px;
+  background: #ff2a6d;
+  color: #f5f0ff !important;
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+/* ===== Pop-Animation beim Hinzufügen ===== */
+@keyframes cart-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.6); }
+  100% { transform: scale(1); }
+}
+.cart-bump {
+  animation: cart-pop 0.5s steps(6) both;
+}
+
+/* Schwebender Warenkorb: erst nach dem Scrollen sichtbar */
+.cart-fab {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.cart-fab.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+/* Pop-Animation am Button selbst: Transform ersetzen, damit sie nicht mit dem Einblenden kollidiert */
+.cart-fab.cart-bump {
+  animation: cart-pop 0.5s steps(6) both;
+}
+
+/* Symbole auf den Produktkarten: nach dem Klick kein schwarzer Zustand */
+#page .product .product-grid .inner a.icon:focus,
+#page .product .product-grid .inner a.icon:active {
+  background: #0d0221 !important;
+  color: #ffe600 !important;
+  outline: none;
+}
+#page .product .product-grid .inner a.icon:focus i,
+#page .product .product-grid .inner a.icon:active i {
+  color: #ffe600 !important;
+}
+#page .product .product-grid .inner a.icon:hover,
+#page .product .product-grid .inner a.icon:hover:focus {
+  background: #ffe600 !important;
+}
+#page .product .product-grid .inner a.icon:hover i,
+#page .product .product-grid .inner a.icon:hover:focus i {
+  color: #0d0221 !important;
+}
+
+/* ===== Symbole auf den Produktkarten: gelbe Pixel-Quadrate ===== */
+#page .product .product-grid .inner a.icon,
+#page .product .product-grid .inner a.icon:focus,
+#page .product .product-grid .inner a.icon:active {
+  background: #ffe600 !important;
+  color: #0d0221 !important;
+  border: 3px solid #f5f0ff !important;
+  border-radius: 0 !important;
+  box-shadow: 3px 3px 0 #3a1d6e !important;
+  outline: none;
+}
+#page .product .product-grid .inner a.icon i,
+#page .product .product-grid .inner a.icon:focus i,
+#page .product .product-grid .inner a.icon:active i {
+  color: #0d0221 !important;
+}
+#page .product .product-grid .inner a.icon:hover,
+#page .product .product-grid .inner a.icon:hover:focus {
+  background: #05d9e8 !important;
+}
+#page .product .product-grid .inner a.icon:hover i,
+#page .product .product-grid .inner a.icon:hover:focus i {
+  color: #0d0221 !important;
+}
+
+/* ===== Angeklicktes Warenkorb-Symbol: Rückmeldung beim Hinzufügen ===== */
+#page .product .product-grid .inner a.icon.add-to-cart.cart-bump {
+  display: inline-block !important;
+  transform-origin: center;
+  animation: cart-pop 0.5s steps(6) both !important;
+  background: #39ff88 !important;
+}
+#page .product .product-grid .inner a.icon.add-to-cart.cart-bump i {
+  color: #0d0221 !important;
+}
