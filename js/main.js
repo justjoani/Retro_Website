@@ -290,7 +290,8 @@
 			items: 1,
 			loop: true,
 			margin: 0,
-			nav: false,
+			nav: true,
+			navText: ["<", ">"],
 			dots: true,
 			smartSpeed: 800,
 			autoHeight: true

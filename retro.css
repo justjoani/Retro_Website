@@ -692,3 +692,61 @@ input[type="submit"], input[type="radio"], input[type="checkbox"],
   object-fit: cover;
   margin: 0 auto 16px;
 }
+
+/* ===== Kundenstimmen: Pfeile links und rechts ===== */
+#fh5co-testimonial .owl-carousel {
+  position: relative;
+}
+#fh5co-testimonial .owl-nav {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  margin: 0;
+}
+#fh5co-testimonial .owl-nav .owl-prev,
+#fh5co-testimonial .owl-nav .owl-next {
+  pointer-events: auto !important;
+  cursor: var(--cursor-pointer) !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #ffe600 !important;
+  color: #0d0221 !important;
+  border: 3px solid #f5f0ff !important;
+  border-radius: 0 !important;
+  box-shadow: 3px 3px 0 #3a1d6e !important;
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  opacity: 1 !important;
+}
+#fh5co-testimonial .owl-nav .owl-prev:hover,
+#fh5co-testimonial .owl-nav .owl-next:hover {
+  background: #05d9e8 !important;
+}
+#fh5co-testimonial .owl-nav .owl-prev span,
+#fh5co-testimonial .owl-nav .owl-next span {
+  color: #0d0221 !important;
+}
+
+/* Punkte unten: auch anklickbar mit Pixel-Hand */
+#fh5co-testimonial .owl-dots .owl-dot,
+#fh5co-testimonial .owl-dots .owl-dot span {
+  cursor: var(--cursor-pointer) !important;
+}
+
+/* Kein Greifhand-Zeiger beim Slider, sondern der normale Pixel-Zeiger */
+#fh5co-testimonial .owl-carousel,
+#fh5co-testimonial .owl-carousel.owl-grab,
+#fh5co-testimonial .owl-carousel .owl-stage-outer,
+#fh5co-testimonial .owl-carousel .owl-item {
+  cursor: var(--cursor-default) !important;
+}
