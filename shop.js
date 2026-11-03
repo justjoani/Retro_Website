@@ -253,6 +253,13 @@
         b.setAttribute("data-url", detailUrl(p));
       });
 
+      /* Klick auf den Slide (nicht auf Button oder Link) öffnet das Produkt */
+      li.style.cursor = "pointer";
+      li.addEventListener("click", function (e) {
+        if (e.target.closest("a, button")) return;
+        location.href = detailUrl(p);
+      });
+
       frag.appendChild(li);
     });
 
