@@ -320,8 +320,34 @@
     });
   }
 
+  /* Demo-Bilder durch Produktbilder ersetzen: jedes Element bekommt ein anderes Produkt (zufällig) */
+  function renderRandomImages() {
+    var targets = document.querySelectorAll("[data-random-product]");
+    if (!targets.length || !products.length) return;
+
+    var pool = products.slice();
+    for (var i = pool.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = pool[i];
+      pool[i] = pool[j];
+      pool[j] = t;
+    }
+
+    targets.forEach(function (e, k) {
+      var p = pool[k % pool.length];
+      var src = mainImage(p);
+      if (e.tagName === "IMG") {
+        e.src = src;
+        e.alt = p.name;
+      } else {
+        e.style.backgroundImage = 'url("' + encodeURI(src) + '")';
+      }
+    });
+  }
+
   renderGrids();
   renderHero();
   fillDetail();
   renderCover();
+  renderRandomImages();
 })();
