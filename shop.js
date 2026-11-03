@@ -214,6 +214,53 @@
     if (form) form.setAttribute("data-product-id", p.id);
   }
 
+  /* Großer Slider auf der Startseite: baut aus dem ersten Slide (Vorlage) einen Slide pro Produkt */
+  function renderHero() {
+    var list = document.querySelector("[data-hero]");
+    if (!list || !products.length) return;
+    var tpl = list.querySelector("li");
+    if (!tpl) return;
+
+    var limit = parseInt(list.getAttribute("data-limit"), 10) || 5;
+    var frag = document.createDocumentFragment();
+
+    products.slice(0, limit).forEach(function (p) {
+      var li = tpl.cloneNode(true);
+      li.style.backgroundImage = 'url("' + encodeURI(mainImage(p)) + '")';
+
+      function fill(key, text) {
+        li.querySelectorAll("[data-slide='" + key + "']").forEach(function (e) {
+          e.textContent = text;
+        });
+      }
+      fill("name", p.name);
+      fill("price", euro(p.price));
+
+      /* Platzhaltertext nicht anzeigen */
+      var hasText = p.description && p.description !== "Beschreibung folgt.";
+      li.querySelectorAll("[data-slide='description']").forEach(function (e) {
+        if (hasText) e.textContent = p.description;
+        else e.style.display = "none";
+      });
+
+      li.querySelectorAll("[data-slide='cart']").forEach(function (b) {
+        b.classList.add("add-to-cart");
+        b.setAttribute("href", "#");
+        b.setAttribute("data-id", p.id);
+        b.setAttribute("data-name", p.name);
+        b.setAttribute("data-price", String(p.price));
+        b.setAttribute("data-image", mainImage(p));
+        b.setAttribute("data-url", detailUrl(p));
+      });
+
+      frag.appendChild(li);
+    });
+
+    list.textContent = "";
+    list.appendChild(frag);
+  }
+
   renderGrids();
+  renderHero();
   fillDetail();
 })();
