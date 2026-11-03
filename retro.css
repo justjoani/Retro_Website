@@ -750,3 +750,27 @@ input[type="submit"], input[type="radio"], input[type="checkbox"],
 #fh5co-testimonial .owl-carousel .owl-item {
   cursor: var(--cursor-default) !important;
 }
+
+/* ===== Rechtstexte (AGB, später Impressum und Datenschutz) ===== */
+.retro-legal {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: left;
+}
+.retro-legal h2 {
+  margin-bottom: 20px;
+  font-size: 22px !important;
+}
+.retro-legal h3 {
+  margin: 36px 0 12px;
+  font-size: 13px !important;
+  line-height: 1.7 !important;
+}
+.retro-legal p {
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+.retro-legal-intro {
+  margin-bottom: 28px;
+  color: #05d9e8;
+}
