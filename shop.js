@@ -267,7 +267,25 @@
     list.appendChild(frag);
   }
 
+  /* Kopfbild der Seite: auf der Produktseite das Bild des Produkts, sonst ein zufälliges Produkt */
+  function renderCover() {
+    var covers = document.querySelectorAll("[data-cover]");
+    if (!covers.length || !products.length) return;
+
+    var p = null;
+    if (document.querySelector("[data-product-page]")) {
+      var id = currentId();
+      p = id ? byId(id) : products[0];
+    }
+    if (!p) p = products[Math.floor(Math.random() * products.length)];
+
+    covers.forEach(function (c) {
+      c.style.backgroundImage = 'url("' + encodeURI(mainImage(p)) + '")';
+    });
+  }
+
   renderGrids();
   renderHero();
   fillDetail();
+  renderCover();
 })();
