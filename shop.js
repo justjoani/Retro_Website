@@ -154,15 +154,28 @@
     });
   }
 
-  /* Vorschaubilder unter dem Hauptbild, nur wenn es mehrere Bilder gibt */
+  /* Bildergalerie auf der Produktseite:
+     Vorschaubilder, Klick auf die linke/rechte Hälfte des großen Bildes und Pfeiltasten */
   function buildGallery(p) {
     var imgs = imagesOf(p);
+    var current = 0;
+
+    function goTo(i) {
+      current = (i + imgs.length) % imgs.length;
+      showImage(imgs[current], p.name);
+      document.querySelectorAll("[data-product='gallery'] a").forEach(function (a) {
+        a.classList.toggle("active", Number(a.getAttribute("data-i")) === current);
+      });
+    }
+
+    /* Vorschaubilder unter dem Hauptbild, nur wenn es mehrere Bilder gibt */
     document.querySelectorAll("[data-product='gallery']").forEach(function (gal) {
       gal.textContent = "";
       if (imgs.length < 2) return;
       imgs.forEach(function (src, i) {
         var a = el("a", i === 0 ? "active" : "");
         a.href = "#";
+        a.setAttribute("data-i", String(i));
         a.setAttribute("aria-label", "Bild " + (i + 1) + " von " + imgs.length + ": " + p.name);
         var im = document.createElement("img");
         im.src = src;
@@ -170,12 +183,35 @@
         a.appendChild(im);
         a.addEventListener("click", function (e) {
           e.preventDefault();
-          showImage(src, p.name);
-          gal.querySelectorAll("a").forEach(function (x) { x.classList.remove("active"); });
-          a.classList.add("active");
+          goTo(i);
         });
         gal.appendChild(a);
       });
+    });
+
+    if (imgs.length < 2) return;
+
+    /* Klick auf das große Bild: links = voriges Bild, rechts = nächstes Bild */
+    document.querySelectorAll("[data-product='image']").forEach(function (big) {
+      function isLeft(e) {
+        var r = big.getBoundingClientRect();
+        return e.clientX - r.left < r.width / 2;
+      }
+      big.style.cursor = "e-resize";
+      big.addEventListener("mousemove", function (e) {
+        big.style.cursor = isLeft(e) ? "w-resize" : "e-resize";
+      });
+      big.addEventListener("click", function (e) {
+        e.preventDefault();
+        goTo(current + (isLeft(e) ? -1 : 1));
+      });
+    });
+
+    /* Pfeiltasten, außer beim Tippen in Formularfeldern */
+    document.addEventListener("keydown", function (e) {
+      if (e.target.closest("input, textarea, select")) return;
+      if (e.key === "ArrowLeft") goTo(current - 1);
+      if (e.key === "ArrowRight") goTo(current + 1);
     });
   }
 
