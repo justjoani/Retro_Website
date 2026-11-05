@@ -6,6 +6,7 @@
   var products = window.PRODUCTS || [];
 
   function euro(n) {
+    if (!Number(n)) return "Preis folgt";
     return Number(n).toLocaleString("de-DE", { style: "currency", currency: "EUR" });
   }
   function imagesOf(p) {
@@ -215,6 +216,26 @@
     });
   }
 
+  /* Produktvideo (optional, Feld "video" in products.js): stumm, Wiederholung, mit Bedienleiste */
+  function renderVideo(p) {
+    document.querySelectorAll("[data-product='video']").forEach(function (box) {
+      box.textContent = "";
+      if (box.parentNode) box.parentNode.classList.toggle("no-video", !p.video);
+      if (!p.video) { box.style.display = "none"; return; }
+      var v = document.createElement("video");
+      v.src = p.video;
+      v.controls = true;
+      v.muted = true;
+      v.loop = true;
+      v.autoplay = true;
+      v.playsInline = true;
+      v.preload = "metadata";
+      v.setAttribute("aria-label", "Video: " + p.name);
+      box.appendChild(v);
+      box.style.display = "";
+    });
+  }
+
   /* Detailseite: ohne ?id= das erste Produkt, bei falscher id eine Meldung */
   function fillDetail() {
     if (!document.querySelector("[data-product-page]")) return;
@@ -234,6 +255,7 @@
     setText("description", p.description);
     showImage(mainImage(p), p.name);
     buildGallery(p);
+    renderVideo(p);
 
     document.querySelectorAll("[data-product='cart-button']").forEach(function (b) {
       b.classList.add("add-to-cart");
