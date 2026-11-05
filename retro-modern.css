@@ -1,0 +1,132 @@
+/* retro-modern.css – Design-Trends 2026 (wird NACH retro.css geladen)
+   Enthält: XXL-Schrift, asymmetrisches Raster, überlappende Texte, geometrische Formen,
+   Synthwave-Sonne, Kino-Balken, Micro Interactions, Fortschrittsleiste, Widerrufs-Bereich. */
+
+:root { --neon-pink: #ff2a6d; --neon-cyan: #05d9e8; --neon-yellow: #ffe600; --neon-violet: #7b2ff7; }
+
+/* ===== Bright & Bold: Schrift in XL ===== */
+html body #page #fh5co-header.fh5co-cover h1 {
+  font-size: clamp(2rem, 6.5vw, 5rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+}
+#fh5co-hero .slider-text .desc h2 {
+  font-size: clamp(1.8rem, 5.5vw, 4.2rem) !important;
+  line-height: 1.05 !important;
+}
+.fh5co-heading h2 { font-size: clamp(1.6rem, 4vw, 3rem) !important; }
+
+/* ===== Asymmetrisches Raster (nur auf großen Bildschirmen) ===== */
+@media (min-width: 992px) {
+  #fh5co-product .row > .col-md-4:nth-child(3n+2) { margin-top: 70px; }
+  #fh5co-product .row > .col-md-4:nth-child(3n+3) { margin-top: 25px; }
+  #fh5co-product .row > .col-md-4 { margin-bottom: 40px; }
+}
+
+/* ===== Überlappende Texte und Bilder: Produktname schiebt sich über das Bild ===== */
+.product .desc { position: relative; z-index: 2; }
+.product .desc h3 {
+  display: inline-block;
+  margin-top: -34px !important;
+  padding: 6px 12px;
+  background: rgba(13, 2, 33, 0.92);
+  border-left: 5px solid var(--neon-pink);
+  transform: rotate(-2deg);
+  transition: transform .25s steps(4);
+}
+.product:hover .desc h3 { transform: rotate(0deg) translateY(-4px); }
+
+/* ===== Geometrische Ästhetik: Formen im Hintergrund ===== */
+#fh5co-header, #fh5co-product, #fh5co-about, #fh5co-footer { position: relative; overflow: hidden; }
+#fh5co-header::after, #fh5co-product::before, #fh5co-footer::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+#fh5co-header::after {
+  right: 6%; bottom: 12%; width: 0; height: 0;
+  border-left: 40px solid transparent; border-right: 40px solid transparent;
+  border-bottom: 70px solid var(--neon-pink); opacity: .55;
+  animation: retro-float 7s ease-in-out infinite;
+}
+#fh5co-product::before {
+  left: -40px; top: 120px; width: 120px; height: 120px;
+  border: 6px solid var(--neon-cyan); opacity: .25; transform: rotate(18deg);
+}
+#fh5co-footer::before {
+  right: 8%; top: 30px; width: 70px; height: 70px; border-radius: 50%;
+  background: var(--neon-violet); opacity: .35;
+}
+#fh5co-product > .container, #fh5co-footer > .container { position: relative; z-index: 2; }
+@keyframes retro-float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-18px) rotate(8deg); } }
+
+/* ===== Luxuriöser Surrealismus: schwebende Synthwave-Sonne im Hero ===== */
+#fh5co-hero .flexslider .slides > li { position: relative; overflow: hidden; }
+#fh5co-hero .flexslider .slides > li::after {
+  content: "";
+  position: absolute;
+  right: 6%; bottom: 10%;
+  width: clamp(120px, 22vw, 320px); aspect-ratio: 1;
+  border-radius: 50%;
+  background: repeating-linear-gradient(to bottom, transparent 0 14px, rgba(13,2,33,.9) 14px 18px),
+              linear-gradient(to bottom, var(--neon-yellow), var(--neon-pink) 55%, var(--neon-violet));
+  box-shadow: 0 0 60px rgba(255, 42, 109, .55);
+  opacity: .8;
+  pointer-events: none;
+  animation: retro-float 9s ease-in-out infinite;
+}
+#fh5co-hero .slider-text { position: relative; z-index: 3; }
+
+/* ===== Kinematographie: Kino-Balken oben und unten, langsames Einblenden ===== */
+#fh5co-hero .flexslider .slides > li::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0,0,0,.75) 0, transparent 14%, transparent 86%, rgba(0,0,0,.75) 100%);
+}
+#fh5co-hero .slider-text .desc > * { animation: retro-rise .9s ease both; }
+#fh5co-hero .slider-text .desc > *:nth-child(2) { animation-delay: .15s; }
+#fh5co-hero .slider-text .desc > *:nth-child(3) { animation-delay: .3s; }
+#fh5co-hero .slider-text .desc > *:nth-child(4) { animation-delay: .45s; }
+@keyframes retro-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+/* ===== Micro Interactions ===== */
+.btn, .add-to-cart { transition: transform .08s steps(2), box-shadow .08s steps(2); }
+.btn:active, .add-to-cart:active { transform: translate(3px, 3px); }
+.product .product-grid { transition: transform .15s ease-out; transform-style: preserve-3d; will-change: transform; }
+.retro-spark {
+  position: fixed; width: 8px; height: 8px; z-index: 9999; pointer-events: none;
+  animation: retro-spark .7s ease-out forwards;
+}
+@keyframes retro-spark { to { transform: translate(var(--dx), var(--dy)) scale(.2); opacity: 0; } }
+
+/* ===== Experimentelle Navigation: Fortschrittsleiste (XP-Balken) ganz oben ===== */
+#retro-progress {
+  position: fixed; top: 0; left: 0; height: 6px; width: 0; z-index: 10000;
+  background: repeating-linear-gradient(90deg, var(--neon-cyan) 0 12px, var(--neon-pink) 12px 24px);
+  box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* ===== Widerrufs-Bereich: auf jeder Seite, hervorgehoben ===== */
+html body #page .retro-withdraw {
+  background: var(--neon-yellow) !important; color: #0d0221;
+  border-top: 4px solid var(--neon-pink); border-bottom: 4px solid var(--neon-pink);
+  padding: 22px 0; text-align: center;
+}
+.retro-withdraw p { margin: 0 0 10px; color: #0d0221 !important; background: none !important; font-weight: bold; }
+html body #page .retro-withdraw a.retro-withdraw-btn {
+  display: inline-block; padding: 14px 28px; background: #0d0221 !important; color: var(--neon-yellow) !important;
+  border: 3px solid #0d0221; font-weight: bold; text-transform: uppercase; letter-spacing: .06em;
+  box-shadow: 5px 5px 0 var(--neon-pink);
+}
+html body #page .retro-withdraw a.retro-withdraw-btn:hover, html body #page .retro-withdraw a.retro-withdraw-btn:focus { background: var(--neon-pink) !important; color: #fff !important; }
+.retro-withdraw-form label { display: block; margin: 14px 0 4px; font-weight: bold; }
+.retro-withdraw-form input[type=text], .retro-withdraw-form input[type=email] { width: 100%; max-width: 480px; padding: 10px; }
+.retro-withdraw-form .btn { margin-top: 18px; }
+.retro-withdraw-sum { border: 3px solid var(--neon-cyan); padding: 16px; margin: 16px 0; }
+
+/* ===== Bewegung reduzieren, wenn der Browser das wünscht ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
