@@ -805,3 +805,5 @@ input[type="submit"], input[type="radio"], input[type="checkbox"],
   #fh5co-header .retro-head-text { width: 100%; margin-bottom: 20px; }
   #fh5co-header .retro-head-video video { width: 300px; height: 300px; }
 }
+/* ===== Produktseite: zwei Reiter (Produktdetails, Bewertungen) füllen die ganze Breite ===== */
+.fh5co-tabs .fh5co-tab-nav li { width: 50% !important; }
