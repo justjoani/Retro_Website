@@ -346,6 +346,14 @@
 
     covers.forEach(function (c) {
       c.style.backgroundImage = 'url("' + encodeURI(mainImage(p)) + '")';
+      /* Produktbild vollständig auf der türkisen Fläche rechts im Header */
+      if (!c.querySelector(".retro-cover-img")) {
+        var pic = document.createElement("img");
+        pic.className = "retro-cover-img";
+        pic.src = mainImage(p);
+        pic.alt = "";
+        c.insertBefore(pic, c.firstChild);
+      }
     });
   }
 

@@ -871,3 +871,75 @@ html body #page #fh5co-hero .slider-text .desc p { color: rgba(255, 255, 255, 0.
   }
   html body #page #fh5co-hero .slider-text .desc { max-width: 100%; padding-top: calc(min(60vw, 270px) + 165px) !important; }
 }
+/* ===== Header aller Unterseiten: gleiche Optik wie der Slider (dunkle Textseite, türkise Fläche, Produkt vollständig) ===== */
+html body #page #fh5co-header.fh5co-cover-sm {
+  background-image: none !important;
+  background-color: #0d0221 !important;
+  height: clamp(300px, 40vh, 380px) !important;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid #2a1465;
+}
+html body #page #fh5co-header.fh5co-cover-sm .overlay { display: none !important; }
+html body #page #fh5co-header.fh5co-cover-sm::after { content: none !important; display: none !important; }
+html body #page #fh5co-header.fh5co-cover-sm::before {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: auto;
+  width: 46%;
+  background: #0592ad;
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+  z-index: 0;
+}
+html body #page #fh5co-header.fh5co-cover-sm .container { position: relative; z-index: 2; }
+html body #page #fh5co-header.fh5co-cover-sm .display-t,
+html body #page #fh5co-header.fh5co-cover-sm .display-tc { height: clamp(300px, 40vh, 380px) !important; padding-top: 70px; }
+html body #page #fh5co-header.fh5co-cover-sm .col-md-8.col-md-offset-2 { width: 50%; margin-left: 0; text-align: left !important; }
+html body #page #fh5co-header.fh5co-cover-sm h1 {
+  color: #ffe600 !important;
+  text-shadow: 2px 2px 0 #ff2a6d !important;
+  font-size: clamp(1.8rem, 3.6vw, 3rem) !important;
+  line-height: 1.15 !important;
+  text-align: left;
+}
+html body #page #fh5co-header.fh5co-cover-sm h2 {
+  display: block;
+  background: none !important;
+  padding: 0 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  text-align: left;
+}
+html body #page #fh5co-header .retro-cover-img {
+  position: absolute;
+  z-index: 1;
+  left: 74%;
+  top: calc(50% + 40px);
+  transform: translate(-50%, -50%);
+  width: auto; height: auto;
+  max-width: 34%;
+  max-height: 62%;
+  border: 0 !important;
+  box-shadow: none !important;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+  mask-composite: intersect;
+}
+/* Produktseite: das Video steht rechts auf der türkisen Fläche, dann entfällt das Standbild */
+html body #page #fh5co-header.fh5co-cover-sm:has(.retro-head-row) { height: 460px !important; }
+html body #page #fh5co-header:has(.retro-head-video video) .retro-cover-img { display: none; }
+html body #page #fh5co-header .retro-head-row { height: 460px; padding: 100px 0 30px; }
+html body #page #fh5co-header .retro-head-text { text-align: left; }
+html body #page #fh5co-header .retro-head-row.no-video .retro-head-text { width: 50%; }
+html body #page #fh5co-header .retro-head-video video { max-height: 320px; }
+@media screen and (max-width: 768px) {
+  html body #page #fh5co-header.fh5co-cover-sm { height: 480px !important; }
+  html body #page #fh5co-header.fh5co-cover-sm::before { width: auto; left: 0; top: auto; height: 38%; clip-path: none; }
+  html body #page #fh5co-header.fh5co-cover-sm .display-t,
+  html body #page #fh5co-header.fh5co-cover-sm .display-tc { height: 480px !important; padding-top: 70px; vertical-align: top; }
+  html body #page #fh5co-header.fh5co-cover-sm .col-md-8.col-md-offset-2 { width: 100%; }
+  html body #page #fh5co-header .retro-cover-img { left: 50%; top: auto; bottom: 14px; transform: translateX(-50%); max-width: 50%; max-height: 30%; }
+  html body #page #fh5co-header.fh5co-cover-sm:has(.retro-head-row) { height: auto !important; min-height: 520px; }
+  html body #page #fh5co-header .retro-head-row { flex-direction: column; height: auto; padding: 100px 0 24px; }
+  html body #page #fh5co-header .retro-head-video video { width: 260px; height: 260px; max-height: none; }
+}
