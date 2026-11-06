@@ -807,3 +807,15 @@ input[type="submit"], input[type="radio"], input[type="checkbox"],
 }
 /* ===== Produktseite: zwei Reiter (Produktdetails, Bewertungen) füllen die ganze Breite ===== */
 .fh5co-tabs .fh5co-tab-nav li { width: 50% !important; }
+/* ===== Slider auf der Startseite: Text immer gut lesbar, auch auf hellen Produktbildern ===== */
+html body #page #fh5co-hero .slider-text .desc {
+  background: rgba(13, 2, 33, 0.82) !important;
+  border-left: 6px solid #ff2a6d;
+  padding: 22px 26px !important;
+  max-width: 640px;
+}
+html body #page #fh5co-hero .slider-text .desc .price { color: #7dff9c !important; }
+html body #page #fh5co-hero .slider-text .desc p { color: #fff !important; }
+@media screen and (max-width: 768px) {
+  html body #page #fh5co-hero .slider-text .desc { max-width: 100%; padding: 16px 18px !important; }
+}
