@@ -4,9 +4,30 @@
   var list = document.getElementById("review-list");
   if (!form || !list) return;
 
-  var productId = form.getAttribute("data-product-id") ||
-    (location.pathname.split("/").pop() + location.search);
+  var productId = new URLSearchParams(location.search).get("id") || form.getAttribute("data-product-id") || (location.pathname.split("/").pop() + location.search);
   var KEY = "retroReviews:" + productId;
+  var DEMO = {
+    kabel: [
+      {name:"Jonas K.", rating:5, text:"Sieht auf dem Schreibtisch richtig cool aus und hält das Ladekabel endlich am Knickpunkt zusammen."},
+      {name:"Mira S.", rating:4, text:"Süße Pixelherzen, die Montage dauert keine Minute. Gerne mehr Farben!"}
+    ],
+    kassette: [
+      {name:"Daniel P.", rating:5, text:"Meine alten Spielmodule sind jetzt sicher verstaut. Die Hüllen sitzen perfekt."},
+      {name:"Svenja L.", rating:5, text:"Tolles Retro-Gefühl und stabil verarbeitet. Genau, was meine Sammlung gebraucht hat."}
+    ],
+    notizblockhalter: [
+      {name:"Tobias R.", rating:5, text:"Der kleine Röhrenfernseher ist ein Hingucker im Homeoffice und ich verliere keine Zettel mehr."},
+      {name:"Nina H.", rating:4, text:"Charmante Idee, sehr gut verarbeitet. Passt auch auf einen schmalen Schreibtisch."}
+    ],
+    putztuch: [
+      {name:"Leon B.", rating:5, text:"Reinigt Bildschirm und Controller streifenfrei, und das Pixel-Muster ist einfach schön."},
+      {name:"Anja M.", rating:5, text:"Weich, saugfähig und viel schöner als jedes Standardtuch. Ein tolles Mitbringsel."}
+    ],
+    tasse: [
+      {name:"Felix W.", rating:5, text:"Mein Kaffee bleibt endlich warm, während ich zocke. Der Wärmer sieht aus wie ein Mini-Controller."},
+      {name:"Clara D.", rating:4, text:"Funktioniert zuverlässig per USB und ist ein super Geschenk für Gamer."}
+    ]
+  };
 
   function say(text, ok) {
     var msg = document.getElementById("review-message");
@@ -61,7 +82,7 @@
     list.textContent = "";
     var feed = document.createElement("div");
     feed.className = "feed";
-    load().slice().reverse().forEach(function (r) {
+    (load().slice().reverse().concat(DEMO[productId] || [])).forEach(function (r) {
       feed.appendChild(buildReview(r));
     });
     list.appendChild(feed);

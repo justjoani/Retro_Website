@@ -943,3 +943,15 @@ html body #page #fh5co-header .retro-head-video video { max-height: 320px; }
   html body #page #fh5co-header .retro-head-row { flex-direction: column; height: auto; padding: 100px 0 24px; }
   html body #page #fh5co-header .retro-head-video video { width: 260px; height: 260px; max-height: none; }
 }
+/* Rollenkarten (Über uns) und Rechtstexte */
+html body #page .retro-role-card{background:#150433 !important;border:3px solid #0592ad !important;box-shadow:6px 6px 0 #ff2a6d !important;padding:28px 22px !important;text-align:center !important;margin-bottom:30px !important}
+html body #page .retro-role-card .retro-role-icon{font-size:48px !important;line-height:1 !important;margin-bottom:14px !important}
+html body #page .retro-role-card h3{color:#ffe600 !important;font-size:18px !important;margin:0 0 10px !important}
+html body #page .retro-role-card p{color:#e9e4f5 !important;margin:0 !important}
+html body #page .retro-legal h2{color:#ffe600 !important;margin-bottom:20px !important}
+html body #page .retro-legal h3{color:#39ff88 !important;font-size:18px !important;margin:28px 0 8px !important}
+html body #page .retro-legal p{color:#e9e4f5 !important;line-height:1.7 !important}
+html body #page .retro-legal a{color:#0592ad !important;text-decoration:underline !important}
+html body #page .retro-draft{border:2px dashed #ff2a6d !important;padding:12px 16px !important;color:#ffe600 !important;margin-bottom:24px !important}
+html body #page .retro-avatar{width:84px !important;height:84px !important;line-height:84px !important;margin:0 auto 16px !important;background:#ffe600 !important;color:#0d0221 !important;font-size:30px !important;font-weight:700 !important;border:3px solid #fff !important;box-shadow:5px 5px 0 #ff2a6d !important}
+html body #page .retro-role-card .role{display:block !important;color:#39ff88 !important;margin-bottom:10px !important}
