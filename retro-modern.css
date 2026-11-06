@@ -62,35 +62,6 @@ html body #page #fh5co-header.fh5co-cover h1 {
 #fh5co-product > .container, #fh5co-footer > .container { position: relative; z-index: 2; }
 @keyframes retro-float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-18px) rotate(8deg); } }
 
-/* ===== Luxuriöser Surrealismus: schwebende Synthwave-Sonne im Hero ===== */
-#fh5co-hero .flexslider .slides > li { position: relative; overflow: hidden; }
-#fh5co-hero .flexslider .slides > li::after {
-  content: "";
-  position: absolute;
-  right: 6%; bottom: 10%;
-  width: clamp(120px, 22vw, 320px); aspect-ratio: 1;
-  border-radius: 50%;
-  background: repeating-linear-gradient(to bottom, transparent 0 14px, rgba(13,2,33,.9) 14px 18px),
-              linear-gradient(to bottom, var(--neon-yellow), var(--neon-pink) 55%, var(--neon-violet));
-  box-shadow: 0 0 60px rgba(255, 42, 109, .55);
-  opacity: .8;
-  pointer-events: none;
-  animation: retro-float 9s ease-in-out infinite;
-}
-#fh5co-hero .slider-text { position: relative; z-index: 3; }
-
-/* ===== Kinematographie: Kino-Balken oben und unten, langsames Einblenden ===== */
-#fh5co-hero .flexslider .slides > li::before {
-  content: "";
-  position: absolute; inset: 0; z-index: 2; pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0,0,0,.75) 0, transparent 14%, transparent 86%, rgba(0,0,0,.75) 100%);
-}
-#fh5co-hero .slider-text .desc > * { animation: retro-rise .9s ease both; }
-#fh5co-hero .slider-text .desc > *:nth-child(2) { animation-delay: .15s; }
-#fh5co-hero .slider-text .desc > *:nth-child(3) { animation-delay: .3s; }
-#fh5co-hero .slider-text .desc > *:nth-child(4) { animation-delay: .45s; }
-@keyframes retro-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
-
 /* ===== Micro Interactions ===== */
 .btn, .add-to-cart { transition: transform .08s steps(2), box-shadow .08s steps(2); }
 .btn:active, .add-to-cart:active { transform: translate(3px, 3px); }

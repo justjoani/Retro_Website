@@ -807,15 +807,67 @@ input[type="submit"], input[type="radio"], input[type="checkbox"],
 }
 /* ===== Produktseite: zwei Reiter (Produktdetails, Bewertungen) füllen die ganze Breite ===== */
 .fh5co-tabs .fh5co-tab-nav li { width: 50% !important; }
-/* ===== Slider auf der Startseite: Text immer gut lesbar, auch auf hellen Produktbildern ===== */
-html body #page #fh5co-hero .slider-text .desc {
-  background: rgba(13, 2, 33, 0.82) !important;
-  border-left: 6px solid #ff2a6d;
-  padding: 22px 26px !important;
-  max-width: 640px;
+/* ===== Slider v3: dunkle Textseite, Produkt vollständig auf türkiser Fläche (diagonal geteilt) ===== */
+html body #page #fh5co-hero .flexslider .slides > li {
+  background-image: none !important;
+  background-color: #0d0221 !important;
+  position: relative;
+  overflow: hidden;
 }
-html body #page #fh5co-hero .slider-text .desc .price { color: #7dff9c !important; }
-html body #page #fh5co-hero .slider-text .desc p { color: #fff !important; }
-@media screen and (max-width: 768px) {
-  html body #page #fh5co-hero .slider-text .desc { max-width: 100%; padding: 16px 18px !important; }
+html body #page #fh5co-hero .flexslider .slides > li::after { content: none !important; display: none !important; }
+html body #page #fh5co-hero .flexslider .slides > li::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important; right: 0 !important; bottom: 0 !important; left: auto !important;
+  width: 56% !important;
+  z-index: 0 !important;
+  background: #0592ad !important;
+  clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
+  filter: none !important;
+  animation: none !important;
+}
+html body #page #fh5co-hero .retro-hero-img {
+  position: absolute;
+  z-index: 1;
+  left: 72%;
+  top: calc(50vh - 58px);
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 40%;
+  max-height: min(58vh, 520px);
+  border: 0 !important;
+  box-shadow: none !important;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+  mask-composite: intersect;
+}
+html body #page #fh5co-hero .slider-text .desc {
+  background: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  max-width: 460px;
+}
+html body #page #fh5co-hero .slider-text .desc h2 {
+  color: #ffe600 !important;
+  text-shadow: 2px 2px 0 #ff2a6d !important;
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem) !important;
+  line-height: 1.15 !important;
+}
+html body #page #fh5co-hero .slider-text .desc .price { color: #39ff88 !important; }
+html body #page #fh5co-hero .slider-text .desc p { color: rgba(255, 255, 255, 0.88) !important; }
+@media screen and (max-width: 991px) {
+  html body #page #fh5co-hero .flexslider .slides > li::before {
+    top: 0 !important; left: 0 !important; right: 0 !important; bottom: auto !important;
+    width: auto !important;
+    height: calc(min(60vw, 270px) + 135px) !important;
+    clip-path: none;
+  }
+  html body #page #fh5co-hero .retro-hero-img {
+    left: 50%; top: 100px;
+    transform: translateX(-50%);
+    width: min(60vw, 270px); max-width: none; max-height: none;
+  }
+  html body #page #fh5co-hero .slider-text .desc { max-width: 100%; padding-top: calc(min(60vw, 270px) + 165px) !important; }
 }

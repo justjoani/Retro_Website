@@ -285,6 +285,13 @@
     products.slice(0, limit).forEach(function (p) {
       var li = tpl.cloneNode(true);
       li.style.backgroundImage = 'url("' + encodeURI(mainImage(p)) + '")';
+      /* Produktbild vollständig (rechts) + unscharfe Kopie als Hintergrund */
+      li.style.setProperty("--hero-img", 'url("' + encodeURI(mainImage(p)) + '")');
+      var pic = document.createElement("img");
+      pic.className = "retro-hero-img";
+      pic.src = mainImage(p);
+      pic.alt = p.name;
+      li.insertBefore(pic, li.firstChild);
 
       function fill(key, text) {
         li.querySelectorAll("[data-slide='" + key + "']").forEach(function (e) {
