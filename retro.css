@@ -955,3 +955,11 @@ html body #page .retro-legal a{color:#0592ad !important;text-decoration:underlin
 html body #page .retro-draft{border:2px dashed #ff2a6d !important;padding:12px 16px !important;color:#ffe600 !important;margin-bottom:24px !important}
 html body #page .retro-avatar{width:84px !important;height:84px !important;line-height:84px !important;margin:0 auto 16px !important;background:#ffe600 !important;color:#0d0221 !important;font-size:30px !important;font-weight:700 !important;border:3px solid #fff !important;box-shadow:5px 5px 0 #ff2a6d !important}
 html body #page .retro-role-card .role{display:block !important;color:#39ff88 !important;margin-bottom:10px !important}
+/* Produktvideo weiter rechts: komplett auf der türkisen Fläche, schneidet das dunkle Feld nicht an */
+@media screen and (min-width: 992px) {
+  html body #page #fh5co-header:has(.retro-head-video video) .container { position: static !important; }
+  html body #page #fh5co-header .retro-head-video {
+    position: absolute !important; top: 0; bottom: 0; left: 62%; right: 0; width: auto !important;
+    z-index: 2; display: flex; align-items: center; justify-content: center; padding: 70px 0 0; float: none !important;
+  }
+}
