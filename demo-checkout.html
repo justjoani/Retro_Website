@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Retro Gaming Gear – unverbindlicher Demo-Bestellablauf ohne Zahlung und Versand.">
+  <title>Demo-Kasse – Retro Gaming Gear</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="demo-checkout.css">
+</head>
+<body>
+  <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
+  <header class="demo-header">
+    <div class="demo-container demo-header-inner">
+      <a class="demo-brand" href="index.html">
+        <img src="images/logo.png" alt="" width="50" height="50">
+        <span>RETRO GAMING GEAR</span>
+      </a>
+      <nav aria-label="Hauptnavigation">
+        <a href="product.html">Shop</a>
+        <a href="cart.html">Warenkorb</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="hauptinhalt" class="demo-container">
+    <div class="demo-intro">
+      <p class="demo-eyebrow">LEVEL 02 / CHECKOUT</p>
+      <h1>Demo-Kasse</h1>
+      <p>Teste den Bestellablauf deines Retro-Shops. <strong>Es wird nichts bestellt, bezahlt oder versendet.</strong> Es werden keine persönlichen Daten benötigt.</p>
+    </div>
+
+    <div id="demo-checkout" class="demo-layout">
+      <section class="demo-panel" aria-labelledby="warenkorb-titel">
+        <div class="demo-panel-heading">
+          <h2 id="warenkorb-titel">Dein Warenkorb</h2>
+          <a href="cart.html">Bearbeiten</a>
+        </div>
+        <div id="demo-items" aria-live="polite"></div>
+      </section>
+      <aside class="demo-panel demo-summary" aria-labelledby="uebersicht-titel">
+        <h2 id="uebersicht-titel">Zusammenfassung</h2>
+        <dl class="demo-totals">
+          <div><dt>Warenwert</dt><dd id="demo-subtotal">0,00 €</dd></div>
+          <div><dt>Versand</dt><dd>Entfällt (Demo)</dd></div>
+          <div class="demo-total"><dt>Gesamt</dt><dd id="demo-total">0,00 €</dd></div>
+        </dl>
+        <p class="demo-explanation">Diese Testbestellung ist unverbindlich. Es gibt keine Bezahlung, keine Übermittlung an einen Server und keine Lieferung.</p>
+        <button id="demo-place-order" class="demo-button" type="button" disabled>Testbestellung abschließen</button>
+        <a class="demo-back" href="product.html">Weiter im Shop stöbern</a>
+      </aside>
+    </div>
+
+    <section id="demo-confirmation" class="demo-panel demo-confirmation" aria-live="polite" hidden>
+      <p class="demo-eyebrow">LEVEL COMPLETE!</p>
+      <h2 id="demo-confirmation-heading" tabindex="-1">Demo-Bestellung abgeschlossen</h2>
+      <p id="demo-confirmation-message"></p>
+      <p><strong>Das war nur eine Simulation.</strong> Es wurden weder Geld noch persönliche Daten übertragen. Es erfolgt kein Versand.</p>
+      <a class="demo-button demo-button-link" href="product.html">Zurück zum Shop</a>
+    </section>
+  </main>
+
+  <footer class="demo-footer">
+    <div class="demo-container">RETRO GAMING GEAR · Demo-Shop · <a href="index.html">Startseite</a> · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="demo-checkout.js"></script>
+</body>
+</html>
